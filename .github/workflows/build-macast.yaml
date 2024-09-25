@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
 
       - name: Version
         run: |
@@ -101,14 +101,14 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
       - name: Upload dist linux x64
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: steps.compile.outputs.status == 'success'
         with:
           name: ${{ env.DIST_AMD64 }}
           path: ${{ env.DIST_AMD64 }}
 
       - name: Upload dist deb
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: steps.compile.outputs.status == 'success'
         with:
           name: ${{ env.DIST_AMD64_DEB }}
